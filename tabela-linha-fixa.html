@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog certo - Tabelas com linhas fixas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const table_header = ["ID","First Name","Last Name","Email","Country"];
+            const table_rows = [
+                ["1","John","Doe","john.doe@example.com","USA"],
+                ["2","Jane","Smith","jane.smith@example.com","Canada"],
+                ["3","Michael","Johnson","michael.johnson@example.com","UK"],
+                ["4","Emily","Williams","emily.williams@example.com","Australia"],
+                ["5","James","Brown","james.brown@example.com","USA"],
+                ["6","Emma","Johnson","emma.johnson@example.com","Canada"],
+                ["7","William","Jones","william.jones@example.com","UK"],
+                ["8","Olivia","Davis","olivia.davis@example.com","Australia"],
+                ["9","Benjamin","Miller","benjamin.miller@example.com","USA"],
+                ["10","Ava","Wilson","ava.wilson@example.com","Canada"],
+                ["11","Lucas","Taylor","lucas.taylor@example.com","UK"],
+                ["12","Sophia","Anderson","sophia.anderson@example.com","Australia"],
+                ["13","Mason","Thomas","mason.thomas@example.com","USA"],
+                ["14","Isabella","White","isabella.white@example.com","Canada"],
+                ["15","Alexander","Clark","alexander.clark@example.com","UK"],
+                ["16","Mia","Hall","mia.hall@example.com","Australia"],
+                ["17","Ethan","Lewis","ethan.lewis@example.com","USA"],
+                ["18","Charlotte","Moore","charlotte.moore@example.com","Canada"],
+                ["19","Jacob","Walker","jacob.walker@example.com","UK"],
+                ["20","Amelia","King","amelia.king@example.com","Australia"],
+                ["21","Daniel","Green","daniel.green@example.com","USA"],
+                ["22","Harper","Hill","harper.hill@example.com","Canada"],
+                ["23","Logan","Scott","logan.scott@example.com","UK"],
+                ["24","Evelyn","Young","evelyn.young@example.com","Australia"],
+                ["25","Matthew","Allen","matthew.allen@example.com","USA"],
+                ["26","Liam","Evans","liam.evans@example.com","Canada"],
+                ["27","Avery","Baker","avery.baker@example.com","UK"],
+                ["28","Grace","Patel","grace.patel@example.com","Australia"],
+                ["29","Sofia","Harrison","sofia.harrison@example.com","USA"],
+                ["30","Jackson","Fisher","jackson.fisher@example.com","Canada"],
+                ["31","Lucy","Carter","lucy.carter@example.com","UK"],
+                ["32","Aria","Turner","aria.turner@example.com","Australia"],
+                ["33","Ryan","Parker","ryan.parker@example.com","USA"],
+                ["34","Luna","Cook","luna.cook@example.com","Canada"],
+                ["35","Gabriel","Morris","gabriel.morris@example.com","UK"],
+                ["36","Chloe","Rogers","chloe.rogers@example.com","Australia"],
+                ["37","Carter","Bell","carter.bell@example.com","USA"],
+                ["38","Ella","Gonzalez","ella.gonzalez@example.com","Canada"],
+                ["39","Sebastian","Collins","sebastian.collins@example.com","UK"],
+                ["40","Zoe","Hill","zoe.hill@example.com","Australia"],
+            ];
+            const table_html = `
+                <thead>
+                    <tr>
+                        <th>${table_header.join("</th><th>")}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>${table_rows.map(x => `<td>${x.join("</td><td>")}</td>`).join("</tr><tr>")}</tr>
+                </tbody>
+            `;
+            for (const table of document.getElementsByTagName("table")) {
+                table.innerHTML = table_html;
+            }
+        });
+    </script>
+    <style>
+        .table-container {
+            /* especifica uma barra de rolagem vertical */
+            overflow-y: auto;
+            overflow-x: hidden;
+            /* limita o tamaho para a barra de rolagem aparecer */
+            max-height: 30vh;
+        }
+        table {
+            width: 100%;
+            border-spacing: 0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        /* todas vão ter a mesma cor... */
+        tr { background-color: var(--b0); }
+        /* exceto o header, a segunda linha de dados e a quarta e sexta..., que terão uma cor mais clara */
+        th, tr:nth-child(even) {
+            background-color: var(--b1);
+        }
+        /* adiciona uma borda em baixo da primeira linha */
+        th {
+            border-bottom: var(--f1) solid 1px;
+        }
+        /* torna a primeira linha grudenta (ela gruda na posição 0, ou seja no top do contânier dela) */
+        th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">Blog certo</a></h1>
+        </header>
+        <article>
+            <h1 id="titulo">Usando sticky para fazer tabelas com linhas fixas</h1>
+            <p>
+                Exemplo: <i>(inspecione a table com <code>Ctrl + Shift + C</code> para ver mais).</i>
+            </p>
+            <br>
+            <div class="table-container">
+                <table>
+                    <!-- os dados são preenchidos com javascript -->
+                </table>
+            </div>
+        </article>
+    </main>
+</body>
+
+</html>

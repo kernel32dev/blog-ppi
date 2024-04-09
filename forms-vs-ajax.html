@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog certo - Forms vs Ajax</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">Blog certo</a></h1>
+        </header>
+        <article>
+            <h1 id="titulo">Quando usar forms e quando usar ajax?</h1>
+            <p>
+                As duas tecnologias existem para permitir que o seu site se interaja com o servidor de forma dinâmica, mas para entender quando se deve usar uma ou outra, precisamos primeiro entender como funcionam:
+            </p>
+            <h3 id="form">Form</h3>
+            <p>
+                Um form em html é um conjunto de <code>&lt;input&gt;</code> dentro de um elemento <code>&lt;form&gt;</code> com um botão <code>&lt;button type="submit"&gt;</code>.
+            </p>
+            <p>
+                Ao apertar o botão, o form faz um request http ao servidor e o que for retornado do servidor é mostrado, isso permite ao usuário executar ações de escrita como uma compra ou cadastro, ou uma ação de leitura como uma pesquisa.
+            </p>
+            <p>
+                O form portanto espera que o servidor retorne <b>uma página HTML</b> para ser exibido.
+            </p>
+            <h3 id="ajax">Ajax</h3>
+            <p>
+                O ajax surgiu depois do form, e permite ao javascript fazer um request arbitrário ao servidor, mas o resultado <b>não é exibido ao usuário, nem a página é subsitituida</b>
+            </p>
+            <p>
+                O ajax foi eventualmente suplantado por novas ténologias própias do navegador, primeiro <code><a href="https://developer.mozilla.org/pt-BR/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a></code> e depois <code><a href="https://developer.mozilla.org/pt-BR/docs/Web/API/fetch">fetch()</a></code>.
+                <br>
+                Mas a ideia é a mesma, executar um request e dar o resultado ao javascript.
+            </p>
+            <h3 id="diferencas">Diferenças</h3>
+            <p>
+                O form espera uma página, se o servidor não retornar uma página, não se deve usar um form. A exceção é quando o servidor retorna um redirect, que redireciona o usuário a outra página, o que é o mais comum.
+            </p>
+            <p>
+                O ajax espera qualquer coisa, tornando-o ideal para interagir com APIs Rest, onde o resultado geralmente vêm no formato json e não está pronto para ser exibido.
+            </p>
+            <p>
+                O form têm um escopo de uso bem limitado, e por isso em sites modernos é relegado a sites que tentam ser minimalistas ou que tentam ser compatíveis com o maior número de navegadores possível.
+            </p>
+            <h3 id="servidor">A influência do servidor</h3>
+            <p>
+                Ou seja no fim das contas, quem define qual deve ser usado é o servidor, frameworks como Laravel e Django, que usam a abstração MVC trabalham bem com forms, pois você pode usar o form para construir um link para a rota que exibe os dados de um relatório, por exemplo.
+            </p>
+            <p>
+                Já outros frameworks como next.js que focam em abstrações orientadas a componentes, fazem suas apis voltadas a retornar apenas os dados em json, por isso usam quase que exclusivamente <code><a href="https://developer.mozilla.org/pt-BR/docs/Web/API/fetch">fetch()</a></code> para fazer os requests.
+            </p>
+            <p>
+                Pois é o código do componente que é responsável por exibir e estruturas os dados, isso elimina a ideia do servidor retornar o própio html.
+            </p>
+            <h3 id="conclusao">Conclusão</h3>
+            <p>
+                Quando usar forms e quando usar ajax?
+                <br>
+                Depende de qual abstração você está usando no servidor, e qual a forma preferida pelo ambiente no qual você está trabalhando, quando em dúvida, use ajax. A não ser que queira algo super minimalista com zero javascript.
+            </p>
+            <h3 id="exemplo">Exemplo</h3>
+            <p>
+                Aqui está um exemplo de um form em ação, observe como você navega (é redirecionado) para outra página. <br>
+                Observe também como o link resultante é construido a partir dos componentes do form (inspecione o form com <code>Ctrl + Shift + C</code> para vêr mais).
+                <br>
+                <form action="https://duckduckgo.com/" method="get">
+                    <label for="query">Pesquisar no duckduckgo:</label><br>
+                    <input type="text" id="query" name="q" required><br><br>
+                    <input type="submit" value="Search">
+                </form>
+            </p>
+        </article>
+    </main>
+</body>
+
+</html>

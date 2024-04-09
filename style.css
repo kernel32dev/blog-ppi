@@ -11,6 +11,7 @@
     --b1: #22272e;
     --f1: #444c56;
     --text: #ffffff;
+    color-scheme: dark;
 }
 body {
     background-color: var(--b1);
@@ -40,7 +41,7 @@ body>main>article {
     flex-grow: 1;
     border-top: var(--f1) 1px solid;
     background-color: var(--b0);
-    padding: 2rem clamp(1rem, 10%, calc(100% - 1000px));
+    padding: 0 clamp(1rem, 10%, calc(100% - 1000px)) 3rem;
 }
 body>main>article hr {
     background-color: var(--f1);
@@ -49,12 +50,22 @@ body>main>article hr {
     outline: none;
     margin: 1rem 0;
 }
-body>main>article h1 {
-    margin: 1rem 0;
+body>main>article h1,
+body>main>article h2,
+body>main>article h3,
+body>main>article h4,
+body>main>article h5,
+body>main>article h6 {
+    margin: 3rem 0 1rem;
     color: var(--text);
     text-decoration-color: var(--theme) !important;
 }
-body>main>article h1::before {
+body>main>article h1>a::before,
+body>main>article h2>a::before,
+body>main>article h3>a::before,
+body>main>article h4>a::before,
+body>main>article h5>a::before,
+body>main>article h6>a::before {
     content: "# ";
     color: var(--theme);
 }

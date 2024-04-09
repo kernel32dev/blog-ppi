@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", main);
 function main() {
     // ajeita o espaço de todas as tags code com a classe block dentro de artigo
     document.querySelectorAll("article code.block").forEach(fix_white_space);
-    // torna qualquer elemento dentro de artigo que tiver um id em um link
-    document.querySelectorAll("article [id]").forEach(wrap_in_anchor);
+    // torna qualquer header dentro de artigo que tiver um id em um link
+    document.querySelectorAll("article h1[id],article h2[id],article h3[id],article h4[id],article h5[id],article h6[id]").forEach(wrap_in_anchor);
 }
 
 /** essa função ajeita o espaço em branco dentro de uma tag para que seja exibida corretamente com `white-space: pre`, experimente comentar a chamada desta função na main para ver como fica os `<code class="block">` */
@@ -25,7 +25,7 @@ function fix_white_space(elem) {
     elem.innerHTML = html;
 }
 
-/** essa função coloca uma tag a ao redor do elemento, com o href do anchor apontando para aquele elemento,
+/** essa função coloca uma tag a ao redor dos filhos do elemento, com o href do anchor apontando para aquele elemento,
  *
  * isso serve para o usuário poder copiar o link daquelas seção do artigo */
 function wrap_in_anchor(elem) {
@@ -33,6 +33,6 @@ function wrap_in_anchor(elem) {
     if (elem.parentElement instanceof HTMLAnchorElement) return;
     const a = document.createElement("a");
     a.href = "#" + elem.id;
-    elem.replaceWith(a);
-    a.appendChild(elem);
+    a.append(...elem.childNodes);
+    elem.appendChild(a);
 }
