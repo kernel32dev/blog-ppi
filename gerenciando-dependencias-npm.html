@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog certo - Gerênciando dependências com npm</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">Blog certo</a></h1>
+        </header>
+        <article>
+            <h1 id="titulo">Como corretamente gerênciar suas depêndencias com npm</h1>
+            <p>
+                Caso você esteja acoustumado a incluir um txt em seus projetos node com intruções sobre quais dependências instalar,
+                você está fazendo errado e tem uma forma muito mais fácil:
+            </p>
+            <p>
+                Você pode declarar suas depêndencias no <code>package.json</code> do seu projeto
+            </p>
+            <code class="block">
+                {
+                    "dependencies": {
+                        "readline": "^1.3.0"
+                    }
+                }
+            </code>
+            <p>
+                Então quando você quiser instalar as dependências, basta executar <code>npm install</code>
+            </p>
+            <p>
+                O npm torna fácil editar esse arquivo com os própios comandos do npm,
+                sempre que você for instalar ou desinstalar algo basta adicionar a flag <code>-S</code> ou <code>--save</code> ao comando assim:
+                <br><br>
+                <code>npm i -S readline</code>, que é a mesma coisa que <code>npm install --save readline</code>
+                <br><br>
+                após executar esse comando o <code>package.json</code> será atualizado com mais essa linha, e o mesmo é serve para <code>npm uninstall</code>
+            </p>
+            <hr>
+            <p>
+                <b>Resumindo</b>, sempre adicione a flag <code>-S</code> aos seus installs e uninstalls para depois ficar fácil de instalar as depências em outros computadores
+            </p>
+        </article>
+    </main>
+</body>
+
+</html>
